@@ -38,7 +38,7 @@ export async function onRequestPost(context) {  // Contents of context object
 			 	'Access-Control-Allow-Headers': 'x-requested-with, accept, origin, content-type'
 			 	}
 	}
-	
+	}
 	
 	
 	
