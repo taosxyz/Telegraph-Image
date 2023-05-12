@@ -43,11 +43,11 @@ export async function onRequestPost(context) { // Contents of context object
 
 	return new Response(info, {
 		status: 200,
-		statusText: '',
 		headers: {
 			'Access-Control-Allow-Origin': request.url,
-			'Access-Control-Allow-Methods': 'POST,GET,OPTIONS',
+			'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,TRACE,DELETE,HEAD,OPTIONS',
 			'Access-Control-Allow-Headers': 'x-requested-with, accept, origin, content-type'
+			'access-control-max-age': '86400'
 		}
 
 	});
