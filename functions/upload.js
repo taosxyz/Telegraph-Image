@@ -8,6 +8,7 @@ export async function onRequestPost(context) {  // Contents of context object
      data, // arbitrary space for passing data between middlewares 
      } = context;
      context.request
+	 
      const url = new URL(request.url);
      const response = await fetch('https://telegra.ph/' + url.pathname + url.search, {
          method: request.method,
@@ -15,6 +16,7 @@ export async function onRequestPost(context) {  // Contents of context object
          body: request.body,
      });
      
+	 
      console.log('https://telegra.ph/' + url.pathname + url.search);
 	console.log(request.headers);
 	console.log(request.body);
@@ -24,6 +26,26 @@ export async function onRequestPost(context) {  // Contents of context object
 	console.log("bin_data", bin_data);
 
 	const info = JSON.stringify(bin_data);
+	
+	
+	if(context.request.method === 'OPTIONS'){
+			 return new Response(info, {
+			 	status: 200,
+			 	statusText: 'ok',
+			 	headers:{
+			 	'Access-Control-Allow-Origin': request.url,
+			 	'Access-Control-Allow-Methods': 'POST,GET,OPTIONS',
+			 	'Access-Control-Allow-Headers': 'x-requested-with, accept, origin, content-type'
+			 	}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	return new Response(info, {
 		status: 200,
 		statusText: '',
