@@ -28,7 +28,7 @@ export async function onRequestPost(context) { // Contents of context object
 
 	if (request.method === 'OPTIONS') {
 	        return new Response(null, {
-	            status: 204,
+	            status: 200,
 	            headers: new Headers({
 	                'access-control-allow-origin': request.headers.has('origin') || '*',
 	                'access-control-allow-methods': 'GET,POST,PUT,PATCH,TRACE,DELETE,HEAD,OPTIONS',
