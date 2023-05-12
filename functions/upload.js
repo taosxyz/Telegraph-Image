@@ -22,16 +22,7 @@ export async function onRequestPost(context) {  // Contents of context object
 	
 	console.log("bing_data",bing_data);
 	
-	if(context.request.method == 'OPTIONS'){
-			 return new Response(info, {
-			 	status: 200,
-			 	statusText: 'ok',
-			 	headers:{
-			 	'Access-Control-Allow-Origin': request.url,
-			 	'Access-Control-Allow-Methods': 'POST,GET,OPTIONS',
-			 	'Access-Control-Allow-Headers': 'x-requested-with, accept, origin, content-type'
-			 	}
-	}}
+	
 	
 	new Response(reason, {
 	    status: 200,
