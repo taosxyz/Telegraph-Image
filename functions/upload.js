@@ -26,18 +26,17 @@ export async function onRequestPost(context) { // Contents of context object
 	const info = JSON.stringify(bin_data);
 
 
-	if(request.method === 'OPTIONS'){
-		return new Response('ok', {
-			status: 200,
-			statusText: 'ok',
-			headers: {
-				'Access-Control-Allow-Origin': request.url,
-				'Access-Control-Allow-Methods': 'POST,GET,OPTIONS',
-				'Access-Control-Allow-Headers': 'x-requested-with, accept, origin, content-type'
-			}
-		
-		});
-	}
+	if (request.method === 'OPTIONS') {
+	        return new Response(null, {
+	            status: 204,
+	            headers: new Headers({
+	                'access-control-allow-origin': request.headers.has('origin') || '*',
+	                'access-control-allow-methods': 'GET,POST,PUT,PATCH,TRACE,DELETE,HEAD,OPTIONS',
+	                'access-control-allow-headers': request.headers.has('access-control-request-headers') || '*',
+	                'access-control-max-age': '86400'
+	            }),
+	        });
+	    }
 
 
 
