@@ -16,17 +16,27 @@ export async function onRequestPost(context) {  // Contents of context object
      });
     
 	console.log("context",context);
-	
 	console.log("response",response);
 	const bing_data = await response.json();
 	
 	console.log("bing_data",bing_data);
+	if(request.method === 'OPTIONS'){
+		return new Response(reason, {
+		    status: 200,
+		    statusText: 'ok',
+		    headers: {
+		      'Content-Type': 'text/plain;charset=UTF-8',
+		      'Cache-Control': 'no-store',
+		      // Returns the "Content-Length" header for HTTP HEAD requests.
+		      'Content-Length': reason.length,
+		    },
+		  });
+	}
 	
 	
-	
-	new Response(reason, {
+    return new Response(reason, {
 	    status: 200,
-	    statusText: 'Unauthorized',
+	    statusText: 'ok',
 	    headers: {
 	      'Content-Type': 'text/plain;charset=UTF-8',
 	      'Cache-Control': 'no-store',
@@ -34,8 +44,6 @@ export async function onRequestPost(context) {  // Contents of context object
 	      'Content-Length': reason.length,
 	    },
 	  });
-	
-	
-    return response;
+	  
   }
   
