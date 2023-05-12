@@ -45,7 +45,7 @@ export async function onRequestPost(context) { // Contents of context object
 		headers: {
 			'Access-Control-Allow-Origin': request.url,
 			'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,TRACE,DELETE,HEAD,OPTIONS',
-			'Access-Control-Allow-Headers': 'x-requested-with, accept, origin, content-type'
+			'Access-Control-Allow-Headers': 'x-requested-with, accept, origin, content-type',
 			'access-control-max-age': '86400'
 		}
 
