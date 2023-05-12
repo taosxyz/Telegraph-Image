@@ -9,11 +9,33 @@ export async function onRequestPost(context) {  // Contents of context object
      } = context;
      context.request
      const url = new URL(request.url);
-     const response = fetch('https://telegra.ph/' + url.pathname + url.search, {
+     const response = await fetch('https://telegra.ph/' + url.pathname + url.search, {
          method: request.method,
          headers: request.headers,
          body: request.body,
      });
+     
+     console.log('https://telegra.ph/' + url.pathname + url.search);
+	console.log(request.headers);
+	console.log(request.body);
+	
+	
+	const bin_data = await response.json();
+	console.log("bin_data", bin_data);
+
+	const info = JSON.stringify(bin_data);
+	return new Response(info, {
+		status: 200,
+		statusText: '',
+		headers:{
+		'Access-Control-Allow-Origin': request.url,
+		'Access-Control-Allow-Methods': 'POST,GET,OPTIONS',
+		'Access-Control-Allow-Headers': 'x-requested-with, accept, origin, content-type'
+		}
+		
+		});
+     
     return response;
+    
   }
   
