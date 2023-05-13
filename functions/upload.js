@@ -16,41 +16,6 @@ export async function onRequestPost(context) { // Contents of context object
 		body: request.body,
 	});
 
-
-	console.log('https://telegra.ph/' + url.pathname + url.search);
-	console.log(request.headers);
-	console.log(request.body);
-
-	const bin_data = await response.json();
-	console.log("bin_data", bin_data);
-	const info = JSON.stringify(bin_data);
-
-
-	if (request.method === 'OPTIONS') {
-	        return new Response('ok', {
-	            status: 200,
-	            headers: new Headers({
-	                'access-control-allow-origin': request.headers.has('origin') || '*',
-	                'access-control-allow-methods': 'GET,POST,PUT,PATCH,TRACE,DELETE,HEAD,OPTIONS',
-	                'access-control-allow-headers': request.headers.has('access-control-request-headers') || '*',
-	                'access-control-max-age': '86400'
-	            }),
-	        });
-	    }
-
-
-
-	return new Response(info, {
-		status: 200,
-		headers: {
-			'Access-Control-Allow-Origin': request.url,
-			'Access-Control-Allow-Methods': 'GET,POST,PUT,PATCH,TRACE,DELETE,HEAD,OPTIONS',
-			'Access-Control-Allow-Headers': 'x-requested-with, accept, origin, content-type',
-			'access-control-max-age': '86400'
-		}
-
-	});
-
 	return response;
 
 }
